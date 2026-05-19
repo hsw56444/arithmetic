@@ -681,15 +681,15 @@
         ruleTimersRef.current.forEach(clearTimeout);
         ruleTimersRef.current = [];
         setRuleAnnouncement({ missionIdx: mIdx, phase, key: Date.now(), exiting: false });
-        // 1.65초 후 사라지는 애니메이션 시작
+        // 2.65초 후 사라지는 애니메이션 시작
         ruleTimersRef.current.push(setTimeout(() => {
           setRuleAnnouncement((prev) => prev ? { ...prev, exiting: true } : null);
-        }, 1650));
-        // 2.0초 후 완전 제거 + 후속 처리
+        }, 2650));
+        // 3.0초 후 완전 제거 + 후속 처리
         ruleTimersRef.current.push(setTimeout(() => {
           setRuleAnnouncement(null);
           if (onAfter) onAfter();
-        }, 2000));
+        }, 3000));
       };
 
       // 미션 모드 시작 — 처음부터 (저장된 진행상황 폐기)
